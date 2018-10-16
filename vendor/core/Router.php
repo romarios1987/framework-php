@@ -54,9 +54,10 @@ class Router
     {
         foreach (self::$routes as $pattern => $route) {
             if (preg_match("#$pattern#i", $url, $matches)) {
-                foreach ($matches as $key => $value) {
-                    if (is_string($key)) {
-                        $route[$key] = $value;
+                //debug($matches);
+                foreach ($matches as $k => $v) {
+                    if (is_string($k)) {
+                        $route[$k] = $v;
                     }
                 }
                 if (!isset($route['action'])) {
@@ -74,16 +75,15 @@ class Router
      * Redirects the URL to the correct route
      * @param string $url - incoming url
      */
-    public static function dispatch($url)
+   public static function dispatch($url)
     {
         $url = self::removeQueryString($url);
-
 
         if (self::matchRoute($url)) {
 
             // Current controller
             $controller = 'app\controllers\\' . self::$route['controller'] . 'Controller';
-
+            debug(self::$route);
             if (class_exists($controller)) {
 
                 // creating a class object (controller object)
@@ -133,13 +133,13 @@ class Router
      * @param $url
      * @return string
      */
-    private static function removeQueryString($url)
+    protected static function removeQueryString($url)
     {
-        if($url){
+        if ($url) {
             $params = explode('&', $url, 2);
-            if(false === strpos($params[0], '=')){
+            if (false === strpos($params[0], '=')) {
                 return rtrim($params[0], '/');
-            }else{
+            } else {
                 return '';
             }
         }

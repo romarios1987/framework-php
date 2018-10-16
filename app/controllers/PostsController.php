@@ -2,18 +2,16 @@
 
 namespace app\controllers;
 
-use vendor\core\base\Controller;
-
-class Posts extends Controller
+class PostsController extends AppController
 {
     public function indexAction()
     {
-        echo "Posts::index";
+        echo "PostsController::index";
     }
 
     public function testAction()
     {
-        echo "Posts::test";
+        echo "PostsController::test";
     }
 
 }

@@ -2,14 +2,13 @@
 
 namespace app\controllers;
 
-class Main
+class MainController extends AppController
 {
-
     public function indexAction(){
-        echo "Main::index";
+        echo "MainController::index";
     }
 
     public function editAction(){
-        echo "Main::edit";
+        echo "MainController::edit";
     }
 }

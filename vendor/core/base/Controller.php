@@ -2,7 +2,6 @@
 
 namespace vendor\core\base;
 
-
 abstract class Controller
 {
     public $route = [];

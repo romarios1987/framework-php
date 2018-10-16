@@ -1,4 +1,11 @@
+# Conditions
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule (.*) index.php?$1 [L,QSA]
+
+# Forwarding Rules
+# QSA - allows you to add get parameters in the query string
+RewriteRule (.*) index.php?$1 [L,QSA]
+
+

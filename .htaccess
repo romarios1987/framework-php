@@ -1,3 +1,5 @@
 AddDefaultCharset utf-8
+#Enable module mod_rewrite
 RewriteEngine On
+#redirect all requests in folder public
 RewriteRule ^(.*)$ /public/$1

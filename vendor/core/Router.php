@@ -83,7 +83,7 @@ class Router
 
             // Current controller
             $controller = 'app\controllers\\' . self::$route['controller'] . 'Controller';
-            debug(self::$route);
+            //debug(self::$route);
             if (class_exists($controller)) {
 
                 // creating a class object (controller object)
@@ -93,6 +93,7 @@ class Router
                 $action = self::lowerCamelCase(self::$route['action']) . 'Action';
                 if (method_exists($controllerObject, $action)) {
                     $controllerObject->$action();
+                    $controllerObject->getView();
                 } else {
                     echo "Метод <b>$controller::$action</b> не найден";
                 }

@@ -9,11 +9,10 @@ class PageController extends AppController
         echo "PageController::index";
     }
 
-
     public function viewAction()
     {
-        debug($this->route);
-        debug($_GET);
+        //debug($this->route);
+        //debug($_GET);
         echo "PageController::view";
     }
 

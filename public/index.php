@@ -17,9 +17,15 @@ define('ROOT', dirname(__DIR__));
 // указывает на папку app
 define('APP', dirname(__DIR__) . '/app');
 
+// Default template
+define('TEMPLATE', 'default');
+
 
 require '../vendor/core/Router.php';
 require ROOT . '/vendor/libs/functions.php';
+
+
+
 
 
 /**

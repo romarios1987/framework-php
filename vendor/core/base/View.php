@@ -1,8 +1,6 @@
 <?php
 
-
 namespace vendor\core\base;
-
 
 class View
 {
@@ -58,9 +56,5 @@ class View
                 echo "Не найден шаблон <b>$file_layout</b>";
             }
         }
-
-
     }
-
-
 }

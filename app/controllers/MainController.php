@@ -2,19 +2,21 @@
 
 namespace app\controllers;
 
+use app\models\Main;
+
 class MainController extends AppController
 {
 
-    public function indexAction(){
-        //echo "MainController::index";
+    public function indexAction()
+    {
 
-        $title = 'Default Layout';
-        $name = 'Remi';
-
-        $this->set(compact("title", "name"));
+        $madel = new Main();
+        $title = 'Page Title';
+        $this->set(compact('title'));
     }
 
-    public function editAction(){
+    public function editAction()
+    {
         //echo "MainController::edit";
     }
 }

@@ -4,14 +4,22 @@ namespace app\controllers;
 
 class PostsController extends AppController
 {
+
+    // On level Class
+    //public $layout = 'default';
+
     public function indexAction()
     {
-        echo "PostsController::index";
+
+        // On level Action
+        $this->layout = false;
+        $this->view = 'test';
+
     }
 
     public function testAction()
     {
-        echo "PostsController::test";
+        //echo "PostsController::test";
     }
 
 }

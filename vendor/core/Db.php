@@ -9,12 +9,30 @@ class Db
     private static $instance;
 
     /**
+     * number of executed sql queries
+     * @var int
+     */
+    public static $countSql = 0;
+
+    /**
+     * array for recording requests
+     * @var array
+     */
+    public static $queries = [];
+
+    /**
      * Db constructor.
      */
     private function __construct()
     {
         $db = require ROOT . '/config/config_db.php';
-        $this->pdo = new \PDO($db['dsn'], $db['user'], $db['pass']);
+
+        $options = [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
+        ];
+
+        $this->pdo = new \PDO($db['dsn'], $db['user'], $db['pass'], $options);
     }
 
     /**
@@ -35,6 +53,9 @@ class Db
      */
     public function execute_sql($sql)
     {
+        self::$countSql++;
+        self::$queries[] = $sql;
+
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute();
     }
@@ -45,8 +66,12 @@ class Db
      */
     public function query_sql($sql)
     {
+        self::$countSql++;
+        self::$queries[] = $sql;
+
         $stmt = $this->pdo->prepare($sql);
         $res = $stmt->execute();
+
         if ($res != false) {
             return $stmt->fetchAll();
         }

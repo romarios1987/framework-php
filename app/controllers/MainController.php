@@ -10,9 +10,14 @@ class MainController extends AppController
     public function indexAction()
     {
 
-        $madel = new Main();
+        $model = new Main();
+
+        //$res = $model->query("SELECT * FROM tbl_post");
+        $posts = $model->findAll();
+        //debug($posts);
+        //var_dump($res);
         $title = 'Page Title';
-        $this->set(compact('title'));
+        $this->set(compact('title', 'posts'));
     }
 
     public function editAction()

@@ -16,7 +16,7 @@ abstract class Model
      * The name of the table with which the model works
      * @var
      */
-    private $table;
+    protected $table;
 
 
     public function __construct()

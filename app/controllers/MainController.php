@@ -15,10 +15,16 @@ class MainController extends AppController
         //$res = $model->query("SELECT * FROM tbl_post");
         //$posts = $model->findAll();
         //$post = $model->findOne('remi9988','author');
-        $post = $model->findOne(13);
-        debug($post);
+        //$post = $model->findOne(13);
+        //debug($post);
         //debug($posts);
         //var_dump($res);
+
+        //$data = $model->findBySql("SELECT * FROM {$model->table} ORDER BY id DESC LIMIT 2");
+        //$data = $model->findBySql("SELECT * FROM {$model->table} WHERE author LIKE ?", ["%9988%"]);
+        $data = $model->findLike('9988', 'author');
+
+        debug($data);
         $title = 'Page Title';
         $this->set(compact('title', 'posts'));
     }

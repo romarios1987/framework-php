@@ -13,7 +13,10 @@ class MainController extends AppController
         $model = new Main();
 
         //$res = $model->query("SELECT * FROM tbl_post");
-        $posts = $model->findAll();
+        //$posts = $model->findAll();
+        //$post = $model->findOne('remi9988','author');
+        $post = $model->findOne(13);
+        debug($post);
         //debug($posts);
         //var_dump($res);
         $title = 'Page Title';

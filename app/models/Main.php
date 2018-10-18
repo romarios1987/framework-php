@@ -5,5 +5,6 @@ use vendor\core\base\Model;
 
 class Main extends Model
 {
-    public $table = 'posts';
+    public $table = 'tbl_post';
+    //public $primaryKey = 'category';
 }

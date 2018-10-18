@@ -19,6 +19,13 @@ abstract class Model
     protected $table;
 
 
+    /**
+     * Primary key
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+
     public function __construct()
     {
         $this->pdo = Db::instance_db();
@@ -39,6 +46,12 @@ abstract class Model
         return $this->pdo->query_sql($sql);
     }
 
+    public function findOne($id, $field = '')
+    {
+        $field = $field ?: $this->primaryKey;
+        $sql = "SELECT * FROM {$this->table} WHERE $field = ? LIMIT 1";
+        return $this->pdo->query_sql($sql, [$id]);
+    }
 
 
 }

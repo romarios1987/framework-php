@@ -51,31 +51,34 @@ class Db
      * @param $sql
      * @return bool
      */
-    public function execute_sql($sql)
+    public function execute_sql($sql, $params = [])
     {
         self::$countSql++;
         self::$queries[] = $sql;
 
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute();
+        return $stmt->execute($params);
     }
 
     /**
      * @param $sql
      * @return array
      */
-    public function query_sql($sql)
+    public function query_sql($sql, $params = [])
     {
         self::$countSql++;
         self::$queries[] = $sql;
 
         $stmt = $this->pdo->prepare($sql);
-        $res = $stmt->execute();
+        $res = $stmt->execute($params);
 
         if ($res != false) {
             return $stmt->fetchAll();
         }
         return [];
     }
+
+
+
 
 }

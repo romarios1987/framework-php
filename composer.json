@@ -1,0 +1,22 @@
+{
+  "name": "framework/framework",
+  "authors": [
+    {
+      "name": "romarios1987",
+      "email": "romios047@gmail.com"
+    }
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "php": ">=7.1.0",
+    "roave/security-advisories": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "framework\\": "vendor/framework/core",
+      "app\\": "app"
+    }
+  }
+}

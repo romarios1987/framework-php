@@ -20,10 +20,10 @@ define('APP', dirname(__DIR__) . '/app');
 // Default template
 define('TEMPLATE', 'default');
 
+require ROOT . 'vendor/autoload.php';
 
 require '../vendor/core/Router.php';
 require ROOT . '/vendor/libs/functions.php';
-
 
 
 

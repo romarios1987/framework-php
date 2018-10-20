@@ -1,6 +1,6 @@
 <?php
 
-namespace vendor\core;
+namespace framework;
 
 // Паттерн проектирования Singleton (Одиночка)
 class Db

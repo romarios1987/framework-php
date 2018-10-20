@@ -14,8 +14,8 @@ require_once CONF . '/routes.php';
 //    }
 //});
 //
-$query = $_SERVER['QUERY_STRING'];
-Router::dispatch($query);
+new \framework\App();
+
 
 
 

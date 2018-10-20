@@ -17,8 +17,8 @@
     <?=$content?>
 
 
-    <?php debug(\vendor\core\Db::$countSql); ?>
-    <?php debug(\vendor\core\Db::$queries); ?>
+    <?php debug(\framework\Db::$countSql); ?>
+    <?php debug(\framework\Db::$queries); ?>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="public/bootstrap4/js/bootstrap.min.js"></script>

@@ -16,11 +16,25 @@ require_once CONF . '/routes.php';
 //
 new \framework\App();
 
-\framework\App::$app->setProperty('test', 'Hello World');
-debug(\framework\App::$app->getProperties());
+//\framework\App::$app->setProperty('test', 'Hello World');
+//debug(\framework\App::$app->getProperties());
 
 
 
+//echo $remi;
+
+///test();
+///
+
+//try{
+//    if(!isset($remis)){
+//        throw new Exception('HEllo World');
+//    }
+//}catch (Exception $e){
+//    var_dump($e);
+//}
+
+//throw new Exception('HEllo World');
 
 
 

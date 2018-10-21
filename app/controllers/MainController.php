@@ -13,7 +13,7 @@ class MainController extends AppController
         $model = new Main();
 
         //$res = $model->query("SELECT * FROM tbl_post");
-        //$posts = $model->findAll();
+        $posts = $model->findAll();
         //$post = $model->findOne('remi9988','author');
         //$post = $model->findOne(13);
         //debug($post);
@@ -22,9 +22,9 @@ class MainController extends AppController
 
         //$data = $model->findBySql("SELECT * FROM {$model->table} ORDER BY id DESC LIMIT 2");
         //$data = $model->findBySql("SELECT * FROM {$model->table} WHERE author LIKE ?", ["%9988%"]);
-        $data = $model->findLike('9988', 'author');
+        //$data = $model->findLike('9988', 'author');
 
-        debug($data);
+       // debug($data);
         $title = 'Page Title';
         $this->set(compact('title', 'posts'));
     }

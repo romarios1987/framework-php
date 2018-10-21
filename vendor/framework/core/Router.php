@@ -95,15 +95,14 @@ class Router
                     $controllerObject->$action();
                     $controllerObject->getView();
                 } else {
-                    echo "Метод <b>$controller::$action</b> не найден";
+                    throw new \Exception("Метод $controller::$action не найден", 404);
                 }
             } else {
-                echo "Контроллер <b>$controller</b> не найден";
+                throw new \Exception("Контроллер $controller не найден", 404);
             }
 
         } else {
-            http_response_code(404);
-            include dirname(__DIR__) . '/../public/404.html';
+            throw new \Exception("Страница не найдена", 404);
         }
     }
 

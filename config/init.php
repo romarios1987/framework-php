@@ -1,5 +1,4 @@
 <?php
-error_reporting(-1);
 define("DEBUG", 1); // 1 - show errors; 0 - not show errors
 define("ROOT", dirname(__DIR__));
 define("WWW", ROOT . '/public');

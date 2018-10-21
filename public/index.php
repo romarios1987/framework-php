@@ -16,8 +16,8 @@ require_once CONF . '/routes.php';
 //
 new \framework\App();
 
-
-
+\framework\App::$app->setProperty('test', 'Hello World');
+debug(\framework\App::$app->getProperties());
 
 
 

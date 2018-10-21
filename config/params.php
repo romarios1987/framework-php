@@ -1,7 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Remi
- * Date: 20.10.2018
- * Time: 22:07
- */
+return [
+    'admin_email' => 'test_admin@mail.ru',
+    'site_name' => 'Фрейморк на php',
+    'pagination' => 3,
+    'smtp_login' => '',
+    'smtp_password' => '',
+];

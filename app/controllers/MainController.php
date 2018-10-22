@@ -13,7 +13,7 @@ class MainController extends AppController
         $model = new Main();
 
         //$res = $model->query("SELECT * FROM tbl_post");
-        $posts = $model->findAll();
+        //$posts = $model->findAll();
         //$post = $model->findOne('remi9988','author');
         //$post = $model->findOne(13);
         //debug($post);
@@ -31,6 +31,6 @@ class MainController extends AppController
 
     public function editAction()
     {
-        //echo "MainController::edit";
+        echo "MainController::edit";
     }
 }

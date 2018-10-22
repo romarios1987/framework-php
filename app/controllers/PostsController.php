@@ -12,7 +12,7 @@ class PostsController extends AppController
     {
 
         // On level Action
-        $this->layout = false;
+        //$this->layout = false;
         $this->view = 'test';
 
     }

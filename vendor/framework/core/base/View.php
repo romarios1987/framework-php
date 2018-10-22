@@ -43,7 +43,7 @@ class View
         if (is_file($file_view)) {
             require $file_view;
         } else {
-            echo "Не найден вид <b>$file_view</b>";
+            throw new \Exception("На найден вид {$file_view}", 500);
         }
         $content = ob_get_clean();
 

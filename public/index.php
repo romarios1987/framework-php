@@ -1,5 +1,4 @@
 <?php
-
 require_once dirname(__DIR__) . '/config/init.php';
 require_once LIBS . '/functions.php';
 require_once CONF . '/routes.php';
@@ -14,17 +13,13 @@ require_once CONF . '/routes.php';
 //    }
 //});
 //
+//new \framework\App();
+
 new \framework\App();
 
 //\framework\App::$app->setProperty('test', 'Hello World');
 //debug(\framework\App::$app->getProperties());
 
-
-
-//echo $remi;
-
-///test();
-///
 
 //try{
 //    if(!isset($remis)){
@@ -38,6 +33,7 @@ new \framework\App();
 
 
 
+//debug(\framework\Router::getRoutes());
 
 
 

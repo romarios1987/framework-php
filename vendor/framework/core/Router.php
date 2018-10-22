@@ -53,14 +53,13 @@ class Router
     public static function matchRoute($url)
     {
         foreach (self::$routes as $pattern => $route) {
-            if (preg_match("#$pattern#i", $url, $matches)) {
-                //debug($matches);
+            if (preg_match("#{$pattern}#i", $url, $matches)) {
                 foreach ($matches as $k => $v) {
                     if (is_string($k)) {
                         $route[$k] = $v;
                     }
                 }
-                if (!isset($route['action'])) {
+                if (empty($route['action'])) {
                     $route['action'] = 'index';
                 }
                 $route['controller'] = self::upperCamelCase($route['controller']);
@@ -75,21 +74,13 @@ class Router
      * Redirects the URL to the correct route
      * @param string $url - incoming url
      */
-   public static function dispatch($url)
+    public static function dispatch($url)
     {
         $url = self::removeQueryString($url);
-
         if (self::matchRoute($url)) {
-
-            // Current controller
             $controller = 'app\controllers\\' . self::$route['controller'] . 'Controller';
-            //debug(self::$route);
             if (class_exists($controller)) {
-
-                // creating a class object (controller object)
                 $controllerObject = new $controller(self::$route);
-
-                // check action
                 $action = self::lowerCamelCase(self::$route['action']) . 'Action';
                 if (method_exists($controllerObject, $action)) {
                     $controllerObject->$action();
@@ -100,7 +91,6 @@ class Router
             } else {
                 throw new \Exception("Контроллер $controller не найден", 404);
             }
-
         } else {
             throw new \Exception("Страница не найдена", 404);
         }
@@ -126,7 +116,6 @@ class Router
     {
         return lcfirst(self::upperCamelCase($name));
     }
-
 
     /**
      * Remove possible get parameters

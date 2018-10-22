@@ -1,8 +1,6 @@
 <?php
 
-
 namespace framework;
-
 
 class ErrorHandler
 {
@@ -20,7 +18,14 @@ class ErrorHandler
         register_shutdown_function([$this, 'fatalErrorHandler']);
     }
 
-
+    /**
+     * Error handling
+     * @param $errno
+     * @param $errstr
+     * @param $errfile
+     * @param $errline
+     * @return bool
+     */
     public function errorHandler($errno, $errstr, $errfile, $errline)
     {
         $this->logErrors($errstr, $errfile, $errline);
@@ -28,6 +33,10 @@ class ErrorHandler
         return true;
     }
 
+    /**
+     * Exception error handling
+     * @param \Exception $e
+     */
     public function exceptionHandler(\Exception $e)
     {
         $this->logErrors($e->getMessage(), $e->getFile(), $e->getLine());
@@ -35,13 +44,16 @@ class ErrorHandler
     }
 
 
+    /**
+     * Fatal error handling
+     */
     public function fatalErrorHandler()
     {
         $error = error_get_last();
         if (!empty($error) && $error['type'] & (E_ERROR | E_PARSE | E_COMPILE_ERROR | E_CORE_ERROR)) {
             $this->logErrors($error['message'], $error['file'], $error['line']);
             ob_end_clean();
-            $this->displayError($error['type'], $error['message'], $error['file'], $error['line']);
+            $this->displayError($error['type'] . ' (Fatal Error)', $error['message'], $error['file'], $error['line']);
         } else {
             ob_end_flush();
         }
@@ -56,7 +68,7 @@ class ErrorHandler
      */
     protected function logErrors($message = '', $file = '', $line = '')
     {
-        error_log("[" . date('Y-m-d H:i:s') . "] Текст ошибки: {$message} | Файл: {$file} | Строка: {$line}\n=================\n", 3, ROOT . '/tmp/errors.log');
+        error_log("[" . date('Y-m-d H:i:s') . "] Текст ошибки: {$message} | Файл: {$file} | Строка: {$line}\n=====================================\n", 3, ROOT . '/tmp/errors.log');
     }
 
     /**

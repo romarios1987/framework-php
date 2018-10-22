@@ -4,30 +4,56 @@ namespace framework\base;
 
 abstract class Controller
 {
-    public $route = [];
-    public $view;
-    public $layout;
+    protected $route = [];
+    protected $view;
+    protected $layout;
 
     /**
-     * Users data
-     * @var array
+     * @var array data
      */
-    public $vars = [];
+    protected $data = [];
+
+    /**
+     * @var array meta data
+     */
+    protected $meta = ['title' => '', 'desc' => '', 'keywords' => ''];
+
 
     public function __construct($route)
     {
         $this->route = $route;
+        $this->controller = $route['controller'];
+        $this->model = $route['controller'];
         $this->view = $route['action'];
+
     }
+
 
     public function getView()
     {
-        $viewObject = new View($this->route, $this->layout, $this->view);
-        $viewObject->render($this->vars);
+        $viewObject = new View($this->route, $this->layout, $this->view, $this->meta);
+        $viewObject->render($this->data);
+        $viewObject->getMeta();
     }
 
-    public function set($vars)
+    /**
+     * Add data to array $data
+     * @param $data
+     */
+    public function set($data)
     {
-        $this->vars = $vars;
+        $this->data = $data;
+    }
+
+    /**
+     * @param string $itle
+     * @param string $description
+     * @param $keywords
+     */
+    public function setMeta($title = '', $description = '', $keywords)
+    {
+        $this->meta['title'] = $title;
+        $this->meta['desc'] = $description;
+        $this->meta['keywords'] = $keywords;
     }
 }

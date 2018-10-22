@@ -9,11 +9,12 @@ class MainController extends AppController
 
     public function indexAction()
     {
-
         $model = new Main();
 
+        $this->setMeta('Главная страница', 'Описание...', 'Ключевики...');
+
         //$res = $model->query("SELECT * FROM tbl_post");
-        //$posts = $model->findAll();
+        $posts = $model->findAll();
         //$post = $model->findOne('remi9988','author');
         //$post = $model->findOne(13);
         //debug($post);

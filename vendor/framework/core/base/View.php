@@ -1,59 +1,76 @@
 <?php
+
 namespace framework\base;
 
 class View
 {
-    /**
-     * Current route
-     * @var array
-     */
-    public $route = [];
+    protected $route = [];
+    protected $view;
+    protected $layout;
 
     /**
-     * Current View
-     * @var string
+     * @var array data
      */
-    public $view;
+    protected $data = [];
 
     /**
-     * Current template
-     * @var string
+     * @var array meta data
      */
-    public $layout;
+    protected $meta = [];
 
-    public function __construct($route, $layout = '', $view = '')
+
+    public function __construct($route, $layout = '', $view = '', $meta)
     {
         $this->route = $route;
+        $this->controller = $route['controller'];
+        $this->model = $route['controller'];
+        $this->view = $view;
+        $this->meta = $meta;
 
         if ($layout === false) {
             $this->layout = false;
         } else {
             $this->layout = $layout ?: TEMPLATE;
         }
-
-        $this->view = $view;
     }
 
-    public function render($vars)
+    public function render($data)
     {
-        if (is_array($vars)) extract($vars);
+        if (is_array($data)) extract($data);
+        debug($data);
+        $viewFile = APP . "/views/{$this->route['controller']}/{$this->view}.php";
 
-        $file_view = APP . "/views/{$this->route['controller']}/{$this->view}.php";
-        ob_start();
-        if (is_file($file_view)) {
-            require $file_view;
+
+        // check is_file
+        if (is_file($viewFile)) {
+            ob_start();
+            require_once $viewFile;
+            $content = ob_get_clean();
         } else {
-            throw new \Exception("На найден вид {$file_view}", 500);
+            throw new \Exception("На найден вид {$viewFile}", 404);
         }
-        $content = ob_get_clean();
 
         if (false !== $this->layout) {
-            $file_layout = APP . "/views/layouts/{$this->layout}.php";
-            if (is_file($file_layout)) {
-                require $file_layout;
+            $layoutFile = APP . "/views/layouts/{$this->layout}.php";
+            if (is_file($layoutFile)) {
+                require $layoutFile;
             } else {
-                echo "Не найден шаблон <b>$file_layout</b>";
+                throw new \Exception("На найден шаблон {$file_layout}", 404);
             }
         }
+
     }
+
+    /**
+     * @return string
+     */
+    public function getMeta()
+    {
+        $output = '<title>' . $this->meta['title'] . '</title>' . PHP_EOL;
+        $output .= '<meta name="description" content=" ' . $this->meta['desc'] . '">' . PHP_EOL;
+        $output .= '<meta name="keywords" content=" ' . $this->meta['keywords'] . '">' . PHP_EOL;
+
+        return $output;
+    }
+
 }

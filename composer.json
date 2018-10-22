@@ -11,7 +11,8 @@
   },
   "require": {
     "php": ">=7.1.0",
-    "roave/security-advisories": "dev-master"
+    "roave/security-advisories": "dev-master",
+    "gabordemooij/redbean": "dev-master"
   },
   "autoload": {
     "psr-4": {

@@ -1,6 +1,7 @@
 <div>
     <?php if (!empty($posts)): ?>
         <?php foreach ($posts as $post): ?>
+            <hr>
             <div class="card">
                 <div class="card-header">
                     <?= $post['title'] ?>
@@ -10,6 +11,7 @@
                     <p class="card-text"><?= $post['body'] ?></p>
                 </div>
             </div>
+            <hr>
         <?php endforeach; ?>
     <?php endif; ?>
 </div>

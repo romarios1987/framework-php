@@ -37,7 +37,7 @@ class View
     public function render($data)
     {
         if (is_array($data)) extract($data);
-        debug($data);
+        //debug($data);
         $viewFile = APP . "/views/{$this->route['controller']}/{$this->view}.php";
 
 

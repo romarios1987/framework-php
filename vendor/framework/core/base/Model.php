@@ -1,10 +1,31 @@
 <?php
 
 namespace framework\base;
+
 use framework\Db;
 
 abstract class Model
 {
+
+    /**
+     * Properties model == rows tables DB
+     * @var array
+     */
+    public $atributes = [];
+
+    /**
+     * @var array Errors
+     */
+    public $errors = [];
+
+    /**
+     * Rules for validation
+     * @var array
+     */
+    public $rules = [];
+
+
+
     /**
      * Connection
      * @var
@@ -27,7 +48,7 @@ abstract class Model
 
     public function __construct()
     {
-        $this->pdo = Db::instance_db();
+      Db::instance();
     }
 
     public function query($sql)

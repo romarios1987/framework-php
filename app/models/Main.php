@@ -1,9 +1,7 @@
 <?php
 namespace app\models;
 
-use framework\base\Model;
-
-class Main extends Model
+class Main extends AppModel
 {
     public $table = 'tbl_post';
     //public $primaryKey = 'category';

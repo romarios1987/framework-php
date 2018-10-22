@@ -13,10 +13,17 @@
 <body>
 <div class="container">
     <h1>Default Template!</h1>
-    <?php //debug(\framework\Db::$countSql);
-    echo $content;
-    ?>
+    <?= $content; ?>
 </div>
+
+
+<?php
+$logs = \RedBeanPHP\R::getDatabaseAdapter()
+    ->getDatabase()
+    ->getLogger();
+debug($logs->grep('SELECT'));
+?>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

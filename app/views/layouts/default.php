@@ -18,10 +18,10 @@
 
 
 <?php
-$logs = \RedBeanPHP\R::getDatabaseAdapter()
-    ->getDatabase()
-    ->getLogger();
-debug($logs->grep('SELECT'));
+//$logs = \RedBeanPHP\R::getDatabaseAdapter()
+//    ->getDatabase()
+//    ->getLogger();
+//debug($logs->grep('SELECT'));
 ?>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

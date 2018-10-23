@@ -6,6 +6,7 @@ define("APP", ROOT . '/app');
 
 define("CORE", ROOT . '/vendor/framework/core');
 define("LIBS", ROOT . '/vendor/framework/libs');
+define("CACHE", ROOT . '/tmp/cache');
 define("CONF", ROOT . '/config');
 
 // Default template

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Main;
+use framework\Cache;
 use RedBeanPHP\R;
 
 class MainController extends AppController
@@ -30,7 +31,15 @@ class MainController extends AppController
 
         // debug($data);
         $title = 'Page Title';
-        $this->set(compact('title', 'posts'));
+        $names = ['Remi', 'John', 'Stepan', 'Mike'];
+
+        $cache = Cache::instance();
+        //$cache->set('test', $names);
+        $cache->delete('test');
+        $data = $cache->get('test');
+        //debug($data);
+
+        $this->set(compact('title', 'names'));
     }
 
     public function editAction()

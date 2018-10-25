@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="public/bootstrap4/css/bootstrap.min.css">
 
-    <title><?=$title?></title>
+    <title></title>
 </head>
 <body>
 <div class="container">

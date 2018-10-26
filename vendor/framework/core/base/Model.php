@@ -25,7 +25,6 @@ abstract class Model
     public $rules = [];
 
 
-
     /**
      * Connection
      * @var
@@ -48,8 +47,20 @@ abstract class Model
 
     public function __construct()
     {
-      Db::instance();
+        Db::instance();
     }
+
+
+    // load data with the form to Model
+    public function load($data)
+    {
+        foreach ($this->atributes as $name => $value) {
+            if (isset($data[$name])) {
+                $this->atributes[$name] = $data[$name];
+            }
+        }
+    }
+
 
     public function query($sql)
     {

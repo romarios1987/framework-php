@@ -7,6 +7,7 @@ use framework\base\Controller;
 
 class AppController extends Controller
 {
+    public $layout = 'main';
     public function __construct($route)
     {
         parent::__construct($route);

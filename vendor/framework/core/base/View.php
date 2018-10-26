@@ -37,6 +37,10 @@ class View
 
     public function render($data)
     {
+
+        // Corect admin path
+        $this->prefix = str_replace('\\', '/', $this->prefix);
+
         if (is_array($data)) extract($data);
         //debug($data);
         $viewFile = APP . "/views/{$this->prefix}{$this->controller}/{$this->view}.php";
